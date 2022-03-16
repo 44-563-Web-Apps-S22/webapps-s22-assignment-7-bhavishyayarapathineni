@@ -58,7 +58,81 @@
         <div class="col-sm-1"><img src="Tree.jpg" id = "23"   onclick = "check(23)" alt="tree" style="width: 100px;height: 100px; padding-bottom: 5%;"></div>
         <div class="col-sm-1"><img src="Tree.jpg" id = "24"   onclick = "check(24)" alt="tree" style="width: 100px;height: 100px; padding-bottom: 5%;"></div>
     </div>
-
+    <script>
+        let ids = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']
+        var shakeCount=0;
+        var birdlLocation=18;
+        function check(position)
+        {
+          i=ids[position];
+          img=document.getElementById(ids[position]);
+          if(ids[position]==birdlLocation){
+          img.src="bird.jpg";}
+          else{
+          img.src="nest.jpg";
+          }
+          shakeCount++;
+          document.getElementById('shakes').innerHTML="Number of shakes is "+shakeCount;
+          document.getElementById('score').innerHTML="Location score is "+locationScore(position,birdlLocation);
+    
+        }
+        function locationScore (pos1, pos2){
+           document.getElementById(ids[pos1])
+           var a,b;
+           a=b=5;
+           let mat=[
+                   [0,1,2,3,4],
+                   [5,6,7,8,9],
+                   [10,11,12,13,14],
+                   [15,16,17,18,19],
+                   [20,21,22,23,24]
+           ];
+           for(let i=0; i<mat.length;i++)
+           {
+            for(let j=0;j<mat[i].length;j++)
+            {
+                if(pos1==mat[i][j])
+                {
+                    r1=i
+                    c1=j
+                }
+            }
+           }
+           for(let i=0; i<mat.length;i++)
+           {
+            for(let j=0;j<mat[i].length;j++)
+            {
+                if(pos2==mat[i][j])
+                {
+                    r2=i
+                    c2=j
+                }
+            }
+           }
+    
+        if(r1==r2)
+        {
+          return 1
+        }
+        else if(c1==c2)
+        {
+          return 1
+        }
+        else if (Math.abs(pos1-pos2)==4 || Math.abs(pos1-pos2)==6)
+        {
+          return 1
+        }
+        else
+        {
+          return 0
+        }
+    
+        }
+        
+        
+    </script>
+    </body>
+    </html>
 </body>
 </html>
     
